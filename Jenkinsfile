@@ -1,8 +1,9 @@
 pipeline {
   environment {
     imagename = "test/test"
-    // registryCredential = 'yenigul-dockerhub'
-    // dockerImage = ''
+    registry = 'https://registry.example.com'
+    registryCredential = 'my-key'
+
   }
   agent any
   stages {
@@ -21,19 +22,19 @@ pipeline {
         }
       }
     }
-    stage('Push Image to registry') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-            dockerImage.push('latest')
-          }
-        }
-      }
-    }
+    // stage('Push Image to registry') {
+    //   steps{
+    //     script {
+    //       docker.withRegistry(registry, registryCredential) {
+    //         dockerImage.push("$BUILD_NUMBER")
+    //         dockerImage.push('latest')
+    //       }
+    //     }
+    //   }
+    // }
     stage('Deploy app') {
       steps{
-        sh "echo deploy app"
+        sh "echo 'deploy app'"
       }
     }
   }
