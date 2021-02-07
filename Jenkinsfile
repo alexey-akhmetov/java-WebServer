@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/alexey1607/jenkins-test.git', branch: 'master', ])
+        git([url: 'https://github.com/alexey-akhmetov/java-WebServer.git', branch: 'master', ])
 
       }
     }
