@@ -1,0 +1,6 @@
+*.txt
+Jenkinsfile
+Dockerfile
+.gitignore
+.git
+.dockerignore
