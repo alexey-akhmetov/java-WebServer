@@ -1,8 +1,8 @@
 pipeline {
   environment {
     imagename = "test/test"
-    registry = 'https://registry.example.com'
-    registryCredential = 'my-key'
+    registry = 'https://https://registry.example.com'
+    registryCredential = 'password'
 
   }
   agent any
@@ -18,7 +18,7 @@ pipeline {
         sh 'docker --version'
         sh 'docker-compose --version'
         script {
-          dockerImage = docker.build("imagename:${env.BUILD_ID}")
+          dockerImage = docker.build("$imagename:${env.BUILD_ID}")
         }
       }
     }
@@ -26,7 +26,7 @@ pipeline {
     //   steps{
     //     script {
     //       docker.withRegistry(registry, registryCredential) {
-    //         dockerImage.push("$BUILD_NUMBER")
+    //         dockerImage.push('${env.BUILD_NUMBER}')
     //         dockerImage.push('latest')
     //       }
     //     }
