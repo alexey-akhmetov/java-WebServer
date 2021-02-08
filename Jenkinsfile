@@ -15,9 +15,9 @@ pipeline {
     }
     stage('Building image') {
       steps{
-        sh 'docker --version'
-        sh 'docker-compose --version'
         script {
+          sh 'docker --version'
+          sh 'docker-compose --version'
           dockerImage = docker.build("$imagename:${env.BUILD_ID}")
         }
       }
